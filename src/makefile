@@ -1,6 +1,6 @@
 template.smc: main.asm link
-	wla-65816 -v -o main.obj main.asm
-	wlalink -v link template.smc
+	../wla-dx/build/binaries/wla-65816 -v -o main.obj main.asm
+	../wla-dx/build/binaries/wlalink -v link template.smc
 	rm main.obj
-	bsnes template.smc
+	../bsnes-plus/bsnes/out/bsnes template.smc
 	rm template.smc

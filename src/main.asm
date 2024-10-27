@@ -37,7 +37,7 @@
 ;---------------|---------|------------|-------------------------------------
 .bank 0
 .org 8192
-.section "VBlank" forced
+.section "VBlank" force
 VBlank:         NMIIN                  ;Saves all registers
                                        ;A=8bit, X/Y=16bit
 

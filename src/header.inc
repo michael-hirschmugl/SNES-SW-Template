@@ -9,7 +9,7 @@
 
 .SNESHEADER
   ID "SNES" 
-  NAME "SNES Tile Demo       "
+  NAME "SNES Title Demo      "
 
   SLOWROM
   LOROM
