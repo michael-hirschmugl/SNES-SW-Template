@@ -1,7 +1,8 @@
 # SNES-SW-Template
 
-https://github.com/vhelin/wla-dx
-https://github.com/devinacker/bsnes-plus
+Submodules:
+- https://github.com/vhelin/wla-dx
+- https://github.com/devinacker/bsnes-plus
 
 ## Initial Setup
 - `git submodule init`
@@ -22,3 +23,25 @@ https://github.com/devinacker/bsnes-plus
 ## Build SNES Software
 - Enter `src/`
 - run `make`
+
+## Makefile Build Options
+
+### Standard Build
+
+To build and run the project in the default mode, use the following command:
+
+```bash
+make template.smc
+```
+
+This will assemble and link the project, create a `template.smc` file, and run it in the `bsnes` emulator. After running, the `.smc` file will be deleted from the output directory (`../out/`).
+
+### Release Build
+
+To create a release version, use the `release` target with an optional `NAME` argument:
+
+```bash
+make release NAME=my_project.smc
+```
+
+This will generate a `.smc` file with the specified project name (e.g., `my_project.smc`) in the output directory (`../out/`). The release version is not deleted after running, making it easy to keep the built ROM file.
