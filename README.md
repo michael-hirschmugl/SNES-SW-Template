@@ -1,4 +1,8 @@
-# SNES-SW-Template
+# SNES Software Project Template
+
+This repository provides a foundational template for developing SNES software projects. It includes sample code that demonstrates core functionality such as graphics rendering, audio processing, and controller input handling on the SNES hardware. Originally designed for an SNES drone emulation project, the template now serves as a flexible starting point for creating new SNES applications.
+
+The project structure supports easy modification and expansion, making it suitable for various SNES-based software development needs. Key features include modularized assembly code, preconfigured build scripts, and sample routines to manage graphics, audio, and input, ensuring efficient integration with SNES emulators like BSNES.
 
 Submodules:
 - https://github.com/vhelin/wla-dx
