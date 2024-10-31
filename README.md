@@ -8,6 +8,11 @@ Submodules:
 - https://github.com/vhelin/wla-dx
 - https://github.com/devinacker/bsnes-plus
 
+## Branches
+- main
+- single-picture:
+  - This branch contains a ROM image, that displays a single frame.
+
 ## Initial Setup
 - `git submodule init`
 - `git submodule update`
