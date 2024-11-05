@@ -141,21 +141,21 @@ Start:          InitSNES               ;Initialize the SNES. (snes_init.asm)
                 
                 ;Upload samples to SPC at $200
                 ;(dsp_stuff.asm)
-                LDY       #$0200
-                JSR       spc_begin_upload
-  loop:         LDA       sample,y
-                JSR       spc_upload_byte
-                CPY       #sample_end - sample
-                BNE       loop
+                ;LDY       #$0200
+                ;JSR       spc_begin_upload
+  ;loop:         LDA       sample,y
+                ;JSR       spc_upload_byte
+                ;CPY       #sample_end - sample
+                ;BNE       loop
   
                 ;Init DSP register buffer at RAM address $001000
                 ;These macros specify the init values for the registers.
                 ;(macros dsp_init.asm)
-                InitDSPch1
-                InitDSPch2
-                InitDSPch3
-                InitDSPch4
-                InitDSPmaster
+                ;InitDSPch1
+                ;InitDSPch2
+                ;InitDSPch3
+                ;InitDSPch4
+                ;InitDSPmaster
 
                 ;Let's load all routines into RAM that need to be executed from there.
                 ;Only thing is, we should not overwrite the RAM mirror at 7E, so
@@ -177,7 +177,7 @@ Start:          InitSNES               ;Initialize the SNES. (snes_init.asm)
                 ;Writes all values from the master dsp register buffer in RAM to the
                 ;registers in the DSP.
                 ;(dsp_stuff.asm)
-                JSR       master_go
+                ;JSR       master_go
 
                 STZ       $4016        ;Write a byte of nothing to $4016 (old style joypad register)
                 EnableNMIandAutoJoypad ;(misc.asm)
@@ -229,7 +229,7 @@ RAM_LOOP:
                 ;the DSP buffer in RAM (00:1000)
                 ;(macro dsp_stuff.asm)
                 ;Please don't ask me why this is in dsp_stuff.asm
-                UPDATE_DSP_RAM_REGS
+                ;UPDATE_DSP_RAM_REGS
                 ; INSIDE NMI ROUTINE???
 
                 WAI
@@ -242,30 +242,30 @@ RAM_LOOP:
                 ;(dsp_ram_routines.asm)
                 ;"PREP_VOL_1_PROD" and "UPDATE_VOL_X" generate the volume bar.
                 ;(misc.asm)
-                PREP_VOL_1_PROD        ; Stores the volume value in the multiplication register
-                UPDATE_DSP_CH1_REGS    ; launches ch1_go_ram from dsp_ram_routines.asm 
-                UPDATE_VOL_1           ; Fetches the multiplication product and writes into the tilemap buffer
-                PREP_VOL_2_PROD
-                UPDATE_DSP_CH2_REGS    ; launches ch2_go_ram from dsp_ram_routines.asm 
-                UPDATE_VOL_2
-                PREP_VOL_3_PROD
-                UPDATE_DSP_CH3_REGS    ; launches ch3_go_ram from dsp_ram_routines.asm 
-                UPDATE_VOL_3
-                PREP_VOL_4_PROD
-                UPDATE_DSP_CH4_REGS    ; launches ch4_go_ram from dsp_ram_routines.asm 
-                UPDATE_VOL_4
-                UPDATE_DSP_MASTER_CH_REGS ; Volume, FLG and Noise are written.
+                ;PREP_VOL_1_PROD        ; Stores the volume value in the multiplication register
+                ;UPDATE_DSP_CH1_REGS    ; launches ch1_go_ram from dsp_ram_routines.asm 
+                ;UPDATE_VOL_1           ; Fetches the multiplication product and writes into the tilemap buffer
+                ;PREP_VOL_2_PROD
+                ;UPDATE_DSP_CH2_REGS    ; launches ch2_go_ram from dsp_ram_routines.asm 
+                ;UPDATE_VOL_2
+                ;PREP_VOL_3_PROD
+                ;UPDATE_DSP_CH3_REGS    ; launches ch3_go_ram from dsp_ram_routines.asm 
+                ;UPDATE_VOL_3
+                ;PREP_VOL_4_PROD
+                ;UPDATE_DSP_CH4_REGS    ; launches ch4_go_ram from dsp_ram_routines.asm 
+                ;UPDATE_VOL_4
+                ;UPDATE_DSP_MASTER_CH_REGS ; Volume, FLG and Noise are written.
 
                 ;(controller_input.asm)
-                READ_CONTROLLER_1      ; Reads the controller input into registers $000F00
-                JUMP_INTERFACE         ; moves the cursor virtually
-                BUTTON_A_THINGS        ; Switches channels ON and OFF
-                WAVECHANGER            ; Changes waveform of each channel
+                ;READ_CONTROLLER_1      ; Reads the controller input into registers $000F00
+                ;JUMP_INTERFACE         ; moves the cursor virtually
+                ;BUTTON_A_THINGS        ; Switches channels ON and OFF
+                ;WAVECHANGER            ; Changes waveform of each channel
                 ;Accu_8bit
                 
-                CURSOR_POS_UPDATE      ; moves the cursor visually (controller_input.asm)
+                ;CURSOR_POS_UPDATE      ; moves the cursor visually (controller_input.asm)
 
-                UPDATE_FREQUENCY_GUI   ; displays pitch values in the GUI (misc.asm)
+                ;UPDATE_FREQUENCY_GUI   ; displays pitch values in the GUI (misc.asm)
 
                 JML       $7F2400
 .ends
